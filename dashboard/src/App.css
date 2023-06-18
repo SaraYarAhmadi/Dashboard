@@ -1,0 +1,23 @@
+.main {
+    flex: 4;
+    padding: 1.3%;
+}
+
+.loading{
+    background-color: white;
+}
+
+.main-dark{
+    color: var(--dark);
+    background-color: var(--dark);
+}
+
+.main-light{
+    color: var(--dark);
+    background-color: var(--burlywood);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,27 @@
+@import "./reset.css";
+
+/* @font-face {
+    font-family: Lalezar;
+    src: url(./fonts/Lalezar-Regular.ttf);
+} */
+
+:root {
+
+    --white: #ffffff;
+    --white-50: #f0f0f0;
+    --blue: #00adb5;
+    --dark: #00458B;
+    --fuchsia: #3778C2;
+    --yellow: #F7CD46;
+    --aqua: #0F2557;
+    --black: #000000;
+    --orange: #D76F30;
+    --burlywood: #FDF5DF;
+    --darkgoldenrod: #F7CD46;
+}
+
+body {
+    display: flex;
+    direction: rtl;
+
+}

@@ -1,0 +1,36 @@
+.text-modal {
+    width: 400px;
+    padding: 25px;
+    background-color: var(--white);
+    line-height: 25px;
+    text-align: justify;
+}
+
+.text-modal-close-btn {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--blue);
+    color: var(--white);
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.comment-table-tr button {
+    padding: 8px 20px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    color: var(--white);
+    background-color: var(--blue);
+    margin-right: 20px;
+}
+
+
+
+td .comment-table-btn {
+    
+    padding: 8px 5px;
+    border-radius: 10px;
+    color: var(--white);
+    background-color: var(--blue);
+    margin-right: 20px;
+}
