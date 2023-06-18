@@ -7,7 +7,6 @@ const adminsdetails = [
         firstName: 'sara',
         lastName: 'yarahmadi',
         img: 'img/sara3.jpg',
-
     },
     {
         id: useId,
@@ -15,7 +14,6 @@ const adminsdetails = [
         firstName: 'reza',
         lastName: 'tahery',
         img: 'img/amir.png',
-
     },
     {
         id: useId,
@@ -26,4 +24,5 @@ const adminsdetails = [
 
     },
 ]
-export default adminsdetails
+
+export default adminsdetails;

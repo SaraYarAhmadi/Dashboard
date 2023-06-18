@@ -1,5 +1,4 @@
 .features {
-    /* width: 100%; */
     display: flex;
     justify-content: space-between;
 
@@ -22,25 +21,8 @@
     font-size: 300%;
     color: rgba(0, 0, 0, .15);
     top: 24px;
-    /* right: 230px; */
     transition: all 0.5s linear;
 }
-
-.featureItem:first-child {
-    background-color: var(--blue) !important;
-
-}
-
-.featureItem:nth-child(2) {
-    background-color: var(--darkgoldenrod) !important;
-
-}
-
-.featureItem:nth-child(3) {
-    background-color: var(--orange) !important;
-
-}
-
 
 .featureTitle {
     font-size: 20px;

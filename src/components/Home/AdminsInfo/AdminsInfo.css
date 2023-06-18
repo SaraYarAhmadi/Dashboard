@@ -1,21 +1,24 @@
-.AdminsInfo{
+.AdminsInfo {
     margin-top: 70px;
     width: 80%;
     margin: 10% auto 5%;
 }
 
-.adminsImg{
-width: 100%;
-height: 70%;
+.adminsImg {
+    width: 100%;
+    height: 70%;
 }
 
-.cardIcons{
+.cardIcons {
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 1.5em;
-    padding: 15px ;
+    padding: 15px;
 }
-.cardIcons:first-child{
-   
+
+@media screen and (max-width: 768px) {
+    .AdminsInfo {
+        width: 83%;
+    }
 }

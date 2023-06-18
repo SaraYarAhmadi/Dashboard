@@ -5,7 +5,6 @@ import Header from "./components/Header/Header";
 import routes from "./routes";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
 export default function App() {
@@ -29,30 +28,29 @@ export default function App() {
   return (
     loading ?
       <div className="w-100 d-flex justify-content-center align-items-center loading" style={{ height: '100vh' }}>
-
         <img src="img/Loading_icon.gif" />
       </div> :
-      // <Row>
-      //   <Col md={4} >
-      //     <Sidebar isDark={isDark} />
-      //   </Col>
-      //   <Col md={8} >
-      //     <div className={`main ${isDark ? 'main-dark' : 'main-light'}`}>
+       <Row className="m-0" >
+         <Col xs={12} sm={12} md={2} className="p-0" >
+           <Sidebar isDark={isDark} />
+         </Col>
+         <Col xs={12} sm={12} md={10} className="p-0" >
+           <div className={`main ${isDark ? 'main-dark' : 'main-light'}`}>
 
-      //       <Header onClick={changeTheme} isDark={isDark} />
+             <Header onClick={changeTheme} isDark={isDark} />
 
-      //       {router}
-      //     </div>
-      //   </Col>
-      // </Row>
-      <Row className="m-0 p-0" >
-        <Col md={2} className="m-0 p-0"> <Sidebar isDark={isDark} /> </Col>
-        <Col md={10} className="m-0 p-0">
-          <div className={`main ${isDark ? 'main-dark' : 'main-light'}`}>
-            <Header onClick={changeTheme} isDark={isDark} />
-            {router}
-          </div>
-        </Col>
-      </Row>
+             {router}
+           </div>
+         </Col>
+       </Row>
+      //<Row className="m-0 p-0" >
+      //  <Col md={2} className="m-0 p-0"> <Sidebar isDark={isDark} /> </Col>
+      //  <Col md={10} className="m-0 p-0">
+      //    <div className={`main ${isDark ? 'main-dark' : 'main-light'}`}>
+      //      <Header onClick={changeTheme} isDark={isDark} />
+      //      {router}
+      //    </div>
+      //  </Col>
+      //</Row>
   );
 }

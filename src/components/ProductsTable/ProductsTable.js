@@ -4,6 +4,7 @@ import DetailsModal from "./../DetailsModal/DetailsModal";
 import EditModal from "./../EditModal/EditModal";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import ErrorBox from "../Errorbox/Errorbox";
+import Table from 'react-bootstrap/Table';
 import "./ProductsTable.css";
 
 const initialData = {
@@ -80,10 +81,10 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
     dispatch({
       type: 'SET_PRODUCT_DATA',
       payload: {
-        productData:{
+        productData: {
           ...state.productData,
-        [propertyName]: event.target.value
-        }        
+          [propertyName]: event.target.value
+        }
       }
     });
   }
@@ -91,63 +92,59 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
   return (
     <>
       {allProducts.length ? (
-        <table className="products-table">
-          <thead>
-            <tr className="products-table-heading-tr">
-              <th>عکس</th>
-              <th>اسم</th>
-              <th>قیمت</th>
-              <th>موجودی</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allProducts.map((product) => (
-              <tr key={product.id} className="products-table-tr">
-                <td>
-                  <img
-                    src={product.img}
-                    alt="oil image"
-                    className="products-table-img"
-                  />
-                </td>
-                <td>{product.title}</td>
-                <td>{product.price} تومان</td>
-                <td>{product.count}</td>
-                <td>
-                  <button
-                    className="products-table-btn"
-                    onClick={() => {
-                      dispatch({ type: 'SET_IS_SHOW_DETAILS_MODAL', payload: { isShowDetailsModal: true } })
-                      dispatch({ type: 'SET_MAIN_PRODUCT_INFOS', payload: { mainProductInfos: product } })
+        <div>
+          <div className="product-item flexBasic text-dark bg-light px-2 mt-3">
+            <p className="flexBasic product-img-wrapper text-center fw-bold"> عکس </p>
+            <p className="w-25 text-center fw-bold"> عنوان </p>
+            <p className="w-25 text-center fw-bold"> قیمت </p>
+            <p className="w-25 text-center fw-bold"> تعداد </p>
+            <p className="product-btnGroup text-center  fw-bold"> عملیات </p>
+          </div>
+          {allProducts.map((product) => (
+            <div key={product.id} className="product-item flexBasic text-dark bg-light px-2 mt-2">
+              <div className="product-img-wrapper">
+                <img
+                  src={product.img}
+                  alt="oil image"
+                />
+              </div>
+              <p className="w-25 text-center">{product.title}</p>
+              <p className="w-25 text-center">{product.price} تومان</p>
+              <p className="w-25 text-center">{product.count}</p>
+              <div className="product-btnGroup">
+                <button
+                  className="products-table-btn"
+                  onClick={() => {
+                    dispatch({ type: 'SET_IS_SHOW_DETAILS_MODAL', payload: { isShowDetailsModal: true } })
+                    dispatch({ type: 'SET_MAIN_PRODUCT_INFOS', payload: { mainProductInfos: product } })
 
-                    }}
-                  >
-                    جزییات
-                  </button>
-                  <button
-                    className="products-table-btn"
-                    onClick={() => {
-                      dispatch({ type: 'SET_IS_SHOW_DELETE_MODAL', payload: { isShowDeleteModal: true } })
-                      dispatch({ type: 'SET_PRODUCT_ID', payload: { productID: product.id } });
-                    }}
-                  >
-                    حذف
-                  </button>
-                  <button
-                    className="products-table-btn"
-                    onClick={() => {
-                      dispatch({ type: 'SET_IS_SHOW_EDIT_MODAL', payload: { isShowEditModal: true } })
-                      dispatch({ type: 'SET_PRODUCT_ID', payload: { productID: product.id } });
-                      dispatch({ type: 'SET_PRODUCT_DATA', payload: { productData: product } });
-                    }}
-                  >
-                    ویرایش
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                  }}
+                >
+                  جزییات
+                </button>
+                <button
+                  className="products-table-btn"
+                  onClick={() => {
+                    dispatch({ type: 'SET_IS_SHOW_DELETE_MODAL', payload: { isShowDeleteModal: true } })
+                    dispatch({ type: 'SET_PRODUCT_ID', payload: { productID: product.id } });
+                  }}
+                >
+                  حذف
+                </button>
+                <button
+                  className="products-table-btn"
+                  onClick={() => {
+                    dispatch({ type: 'SET_IS_SHOW_EDIT_MODAL', payload: { isShowEditModal: true } })
+                    dispatch({ type: 'SET_PRODUCT_ID', payload: { productID: product.id } });
+                    dispatch({ type: 'SET_PRODUCT_DATA', payload: { productData: product } });
+                  }}
+                >
+                  ویرایش
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
         <ErrorBox msg="هیچ محصولی یافت نشد" />
       )}
@@ -161,7 +158,7 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
       )}
       {state.isShowDetailsModal && (
         <DetailsModal onHide={closeDetailsmodal}>
-          <table className="cms-table">
+          <Table striped bordered hover>
             <thead>
               <tr>
                 <th>محبوبیت</th>
@@ -177,7 +174,7 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
                 <td>{state.mainProductInfos.colors}</td>
               </tr>
             </tbody>
-          </table>
+          </Table>
         </DetailsModal>
       )}
       {state.isShowEditModal && (

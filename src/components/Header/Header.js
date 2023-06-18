@@ -22,7 +22,7 @@ export default function Header({ onClick, isDark }) {
                     <h3>برنامه نویس فرانت اند</h3>
                 </div>
             </div>
-            <div className='header-left-section'>
+            <div className='flexBasic header-left-section'>
                 <div className="search-box">
                     <input type="text" placeholder='جست و جو بکنید ...' onChange={(e) => setKeyword(e.target.value)} value={keyword} />
                     <div className={`${!!keyword ? 'd-block' : 'd-none'} search-box-result`} >
@@ -33,10 +33,13 @@ export default function Header({ onClick, isDark }) {
                         </ul>
                     </div>
                 </div>
-                <button className='header-left-icon'>
+                <div className='flexBasic'>
+                     <button className='header-left-icon'>
                     <AiOutlineBell />
                 </button>
                 <Switch onClick={onClick} />
+                </div>
+               
             </div>
         </div>
     )

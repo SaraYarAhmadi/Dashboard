@@ -68,3 +68,41 @@
 }
 
 /* Finish Edit Modal Childs Style */
+
+.product-img-wrapper {
+    width: 100px;
+    height: 100px;
+}
+
+.product-img-wrapper img {
+    width: 100%;
+    height: 100%;
+}
+
+.product-item:nth-child(even) {
+    background: #e0e0e0 !important;
+}
+
+.product-item {
+    border-radius: 5px;
+}
+
+.product-btnGroup {
+    width: 29%;
+    text-align: center;
+}
+
+@media screen and (min-width: 997px)  {
+
+    .product-btnGroup {
+        width: 55%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 996px)  {
+
+    .product-btnGroup {
+        width: 94%;
+    }
+}
+

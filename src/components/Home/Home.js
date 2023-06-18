@@ -4,17 +4,12 @@ import "./Home.css"
 import Features from './Features/Features';
 import AdminsInfo from './AdminsInfo/AdminsInfo'
 
-function Home({ style, isDark }) {
-
-
+function Home() {
 
     return (
-
         <div className='home'>
             <Features></Features>
-
             <AdminsInfo></AdminsInfo>
-
         </div>
     );
 }

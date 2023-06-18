@@ -16,7 +16,7 @@ export default function AdminsInfo() {
             <CardGroup className='AdminsInfo' >
                 {
                     allAdminsInfo.map(adminsInfo => (
-                        <Card key={adminsInfo.id}>
+                        <Card key={adminsInfo.id} className='mx-md-2'>
                             <div className='adminsImg w-100'>
                                 <Card.Img className='w-100 h-100' variant="top" src={adminsInfo.img} />
                             </div>
