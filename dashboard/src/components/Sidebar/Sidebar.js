@@ -10,7 +10,6 @@ export default function Sidebar({isDark}) {
   return (
     <div className={`sidebar ${isDark ? 'sidebar-dark' : 'sidebar-light'}`}>
       <h1 className="sidebar-title">به داشبورد خود خوش آمدید</h1>
-
       <ul className="sidebar-links">
         <NavLink to="/">
             <AiOutlineHome className="icon" />
