@@ -21,7 +21,6 @@ export default function App() {
 
   const changeTheme = (event) => {
     const isDark = event.target.checked;
-    console.log(isDark);
     setIsdark(isDark)
   };
 

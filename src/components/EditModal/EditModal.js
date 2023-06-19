@@ -5,7 +5,6 @@ import { Button } from 'react-bootstrap';
 export default function EditModal({ children, onClose, onSubmit }) {
   useEffect(() => {
     const checkKey = (event) => {
-      console.log(event);
       if (event.keyCode === 27) {
         onClose();
       }
