@@ -3,6 +3,7 @@ import ErrorBox from "../Errorbox/Errorbox";
 import DetailsModal from "../DetailsModal/DetailsModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import EditModal from "../EditModal/EditModal";
+import Button from 'react-bootstrap/Button';
 import "./Comments.css";
 
 const comments = [
@@ -95,44 +96,45 @@ export default function Comments() {
   return (
     <div className="cms-main">
       {state.allComments.length ? (
-        <table className="cms-table">
-          <thead>
-            <tr>
-              <th>اسم کاربر</th>
-              <th>محصول</th>
-              <th>کامنت</th>
-              <th>تاریخ</th>
-              <th>ساعت</th>
-            </tr>
-          </thead>
-
-          <tbody>
+        <div>
+          <div className="product-item flexBasic text-dark bg-light py-5 product-item-title px-2 mt-3 border border-bottom-1 border-secondary">
+              <p className="w-25 text-center fw-bold">اسم کاربر</p>
+              <p className="w-25 text-center fw-bold">محصول</p>
+              <p className="w-25 text-center fw-bold">کامنت</p>
+              <p className="w-25 text-center fw-bold">تاریخ</p>
+              <p className="w-25 text-center fw-bold">ساعت</p>
+              <p className="w-50 text-center fw-bold">عملیات</p>
+          </div>
+          <div>
             {state.allComments.map((comment) => (
-              <tr key={comment.id} className="comment-table-tr">
-                <td>{comment.userID}</td>
-                <td>{comment.productID}</td>
-                <td>
-                  <button
+              <div key={comment.id} className="product-item comments-item flexBasic text-dark bg-light py-5 px-2">
+                <p className="w-25 text-center">{comment.userID}</p>
+                <p className="w-25 text-center">{comment.productID}</p>
+                <div className="w-25 text-center">
+                  <Button
+                  className="btn-info border-0 py-md-3 px-md-3 fw-bold"
                     onClick={() => {
                       dispatch({ type: 'SET_MainCommentBody', payload: { mainCommentBody: comment.body } });
                       dispatch({ type: 'SET_IsShowDetailsModal', payload: { isShowDetailsModal: true, } });
                     }}
                   >
                     دیدن متن
-                  </button>
-                </td>
-                <td>{comment.date}</td>
-                <td>{comment.hour}</td>
-                <td>
-                  <button
+                  </Button>
+                </div>
+                <p className="w-25 text-center">{comment.date}</p>
+                <p className="w-25 text-center">{comment.hour}</p>
+                <div className="w-50 text-center">
+                  <Button
+                  className="border-0 py-md-3 px-md-4 bg-danger fw-bold"
                     onClick={() => {
                       dispatch({ type: 'SET_IsShowDeleteModal', payload: { isShowDeleteModal: true, } })
                       dispatch({ type: 'SET_commentID', payload: { commentID: comment.id, } })
                     }}
                   >
                     حذف
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                  className="border-0 py-md-3 px-md-4 bg-success ms-2 fw-bold"
                     onClick={() => {
                       dispatch({ type: 'SET_IsShowEditModal', payload: { isShowEditModal: true, } })
                       dispatch({ type: 'SET_MainCommentBody', payload: { mainCommentBody: comment.body } });
@@ -140,22 +142,19 @@ export default function Comments() {
                     }}
                   >
                     ویرایش
-                  </button>
-                </td>
-              </tr>
+                  </Button>
+                </div>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
       ) : (
         <ErrorBox msg="هیچ کامنتی یافت نشد" />
       )}
 
       {state.isShowDetailsModal && (
         <DetailsModal onHide={closeDetailsModal}>
-          <p className="text-modal">{state.mainCommentBody}</p>
-          <button className="text-modal-close-btn" onClick={closeDetailsModal}>
-            بستن
-          </button>
+          <p className="text-modal my-3 fw-bold">{state.mainCommentBody}</p>
         </DetailsModal>
       )}
 
@@ -169,6 +168,7 @@ export default function Comments() {
       {state.isShowEditModal && (
         <EditModal onClose={closeEditModal} onSubmit={updateComment}>
           <textarea
+          className="my-3 p-2 w-100 border border-1 border-secondary"
             value={state.mainCommentBody}
             onChange={(event) => dispatch({ type: 'SET_MainCommentBody', payload: { mainCommentBody: event.target.value } })}
           ></textarea>

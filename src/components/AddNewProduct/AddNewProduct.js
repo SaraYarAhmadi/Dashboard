@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './AddNewProduct.css';
 import products from '../../InfosProject';
+import { Button } from 'react-bootstrap';
 
 export default function AddNewProduct({ getAllProducts }) {
 
@@ -69,7 +70,7 @@ export default function AddNewProduct({ getAllProducts }) {
                         <input type="text" placeholder='تعداد رنگ بندی محصول را بنویسید' className='add-products-input' value={newProductColors} onChange={(event) => setNewProductColors(event.target.value)} />
                     </div>
                 </div>
-                <button className='add-products-submit' onClick={addNewProduct}>ثبت محصول</button>
+                <Button className='btn-success border-0 py-3 px-5 fw-bold' onClick={addNewProduct}>ثبت محصول</Button>
             </form>
         </div>
     )

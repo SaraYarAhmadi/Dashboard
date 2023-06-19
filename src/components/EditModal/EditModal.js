@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./EditModal.css";
+import { Button } from 'react-bootstrap';
 
 export default function EditModal({ children, onClose, onSubmit }) {
   useEffect(() => {
@@ -22,9 +23,9 @@ export default function EditModal({ children, onClose, onSubmit }) {
 
         {children}
 
-        <button className="edit-form-submit" onClick={onSubmit}>
+        <Button className="btn-success border-0 py-3 px-3 fw-bold w-100 mt-3" onClick={onSubmit}>
           ثبت اطلاعات جدید
-        </button>
+        </Button>
       </form>
     </div>
   );

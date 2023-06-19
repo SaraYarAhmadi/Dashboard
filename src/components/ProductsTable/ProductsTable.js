@@ -4,7 +4,7 @@ import DetailsModal from "./../DetailsModal/DetailsModal";
 import EditModal from "./../EditModal/EditModal";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import ErrorBox from "../Errorbox/Errorbox";
-import Table from 'react-bootstrap/Table';
+import {Table, Button} from 'react-bootstrap';
 import "./ProductsTable.css";
 
 const initialData = {
@@ -93,12 +93,12 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
     <>
       {allProducts.length ? (
         <div>
-          <div className="product-item flexBasic text-dark bg-light px-2 mt-3">
+          <div className="product-item product-item-title flexBasic text-dark bg-light px-2 mt-3">
             <p className="flexBasic product-img-wrapper text-center fw-bold"> عکس </p>
             <p className="w-25 text-center fw-bold"> عنوان </p>
             <p className="w-25 text-center fw-bold"> قیمت </p>
             <p className="w-25 text-center fw-bold"> تعداد </p>
-            <p className="product-btnGroup text-center  fw-bold"> عملیات </p>
+            <p className="product-btnGroup text-center fw-bold"> عملیات </p>
           </div>
           {allProducts.map((product) => (
             <div key={product.id} className="product-item flexBasic text-dark bg-light px-2 mt-2">
@@ -112,27 +112,26 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
               <p className="w-25 text-center">{product.price} تومان</p>
               <p className="w-25 text-center">{product.count}</p>
               <div className="product-btnGroup">
-                <button
-                  className="products-table-btn"
+                <Button
+                  className="btn-info border-0 py-md-3 px-md-3 fw-bold"
                   onClick={() => {
                     dispatch({ type: 'SET_IS_SHOW_DETAILS_MODAL', payload: { isShowDetailsModal: true } })
                     dispatch({ type: 'SET_MAIN_PRODUCT_INFOS', payload: { mainProductInfos: product } })
-
                   }}
                 >
                   جزییات
-                </button>
-                <button
-                  className="products-table-btn"
+                </Button>
+                <Button
+                  className="btn-danger border-0 py-md-3 px-md-3 fw-bold me-2"
                   onClick={() => {
                     dispatch({ type: 'SET_IS_SHOW_DELETE_MODAL', payload: { isShowDeleteModal: true } })
                     dispatch({ type: 'SET_PRODUCT_ID', payload: { productID: product.id } });
                   }}
                 >
                   حذف
-                </button>
-                <button
-                  className="products-table-btn"
+                </Button>
+                <Button
+                  className="btn-success border-0 py-md-3 px-md-3 fw-bold me-2"
                   onClick={() => {
                     dispatch({ type: 'SET_IS_SHOW_EDIT_MODAL', payload: { isShowEditModal: true } })
                     dispatch({ type: 'SET_PRODUCT_ID', payload: { productID: product.id } });
@@ -140,7 +139,7 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
                   }}
                 >
                   ویرایش
-                </button>
+                </Button>
               </div>
             </div>
           ))}
@@ -158,7 +157,7 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
       )}
       {state.isShowDetailsModal && (
         <DetailsModal onHide={closeDetailsmodal}>
-          <Table striped bordered hover>
+          <Table striped bordered hover className="my-3 text-center">
             <thead>
               <tr>
                 <th>محبوبیت</th>
@@ -166,7 +165,6 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
                 <th>رنگ بندی</th>
               </tr>
             </thead>
-
             <tbody>
               <tr>
                 <td>{state.mainProductInfos.popularity}</td>
@@ -179,6 +177,7 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
       )}
       {state.isShowEditModal && (
         <EditModal
+        className="my-3 p-2 w-100 border border-1 border-secondary"
           onClose={() => dispatch({ type: 'SET_IS_SHOW_EDIT_MODAL', payload: { isShowEditModal: false } })}
           onSubmit={updateProductInfos}
         >

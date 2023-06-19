@@ -15,22 +15,19 @@
     font-size: 1.1rem;
 }
 
-.comment-table-tr button {
-    padding: 8px 20px;
-    font-size: 1.1rem;
-    border-radius: 10px;
-    color: var(--white);
-    background-color: var(--blue);
-    margin-right: 20px;
+.comments-item button {
+
 }
 
 
 
-td .comment-table-btn {
-    
-    padding: 8px 5px;
-    border-radius: 10px;
-    color: var(--white);
-    background-color: var(--blue);
-    margin-right: 20px;
+@media screen and (min-width: 997px) {
+
+    .product-btnGroup {
+        width: 55%;
+    }
+
+    .comments-item button:not(.comments-item div:first-of-type button) {
+        width: calc(85% / 3);
+    }
 }
