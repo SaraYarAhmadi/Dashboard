@@ -97,7 +97,7 @@ export default function Comments() {
     <div className="cms-main">
       {state.allComments.length ? (
         <div>
-          <div className="product-item flexBasic text-dark bg-light py-5 product-item-title px-2 mt-3 border border-bottom-1 border-secondary">
+          <div className="product-item flexBasic text-dark bg-light py-5 product-item-title px-2 mt-3 mb-2">
               <p className="w-25 text-center fw-bold">اسم کاربر</p>
               <p className="w-25 text-center fw-bold">محصول</p>
               <p className="w-25 text-center fw-bold">کامنت</p>
