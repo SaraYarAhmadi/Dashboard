@@ -5,33 +5,37 @@ import { SiGoogleanalytics } from "react-icons/si";
 import FeaturesItem from './FeaturesItem/FeaturesItem';
 import Row from "react-bootstrap/Row";
 import "./Features.css";
+import { useEffect } from "react";
 
 
 const featuresItemData = [
   {
     id: 1,
     title: 'سفارش جدید',
-    count: '83',
+    count: 103,
     icon: <BsBasket3 className="featureIcon" />,
     bgColor:'#00adb5',
   },
   {
     id: 2,
     title: 'کاربران جدید',
-    count: '72',
+    count: 402,
     icon: <ImUsers className="featureIcon" />,
     bgColor:'#F7CD46',
   },
   {
     id: 3,
     title: 'بازدید جدید',
-    count: '65',
+    count: 655,
     icon: <SiGoogleanalytics className="featureIcon" />,
     bgColor:'#D76F30',
   },
 ];
 
 export default function Features() {
+
+  
+  
   return (
     <div className='features'>
       <Row className="w-100 mx-auto">
