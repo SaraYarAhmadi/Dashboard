@@ -42,14 +42,5 @@ export default function App() {
            </div>
          </Col>
        </Row>
-      //<Row className="m-0 p-0" >
-      //  <Col md={2} className="m-0 p-0"> <Sidebar isDark={isDark} /> </Col>
-      //  <Col md={10} className="m-0 p-0">
-      //    <div className={`main ${isDark ? 'main-dark' : 'main-light'}`}>
-      //      <Header onClick={changeTheme} isDark={isDark} />
-      //      {router}
-      //    </div>
-      //  </Col>
-      //</Row>
   );
 }

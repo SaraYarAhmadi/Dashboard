@@ -1,12 +1,15 @@
 .AdminsInfo {
     margin-top: 70px;
-    width: 80%;
-    margin: 10% auto 5%;
+    width: 97%;
+    margin: 0 auto;
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
 }
 
 .adminsImg {
-    width: 100%;
+    width: 80%;
     height: 70%;
+    margin: 0 auto;
 }
 
 .cardIcons {
@@ -15,6 +18,14 @@
     justify-content: space-between;
     font-size: 1.5em;
     padding: 15px;
+}
+
+.cardIcons a {
+    font-size: 1.5em;
+}
+
+.admin-cart-item {
+    border-radius: 5px;
 }
 
 @media screen and (max-width: 768px) {

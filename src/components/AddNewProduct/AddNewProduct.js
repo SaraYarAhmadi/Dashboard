@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import './AddNewProduct.css';
-import products from '../../InfosProject';
 import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { addNewProducts } from '../../Redux/productsSlice';
 
-export default function AddNewProduct({ getAllProducts }) {
+export default function AddNewProduct() {
 
-
+    const dispatch = useDispatch();
     const [newProductTitle, setNewProductTitle] = useState('')
     const [newProductPrice, setNewProductPrice] = useState('')
     const [newProductCount, setNewProductCount] = useState('')
@@ -26,9 +27,8 @@ export default function AddNewProduct({ getAllProducts }) {
 
     const addNewProduct = (event) => {
 
-        const newProducts = [...products, newProductsInfos];
-        event.preventDefault();
-        getAllProducts(newProducts);
+        event.preventDefault();        
+        dispatch(addNewProducts(newProductsInfos));
         resetForm();
     }
 

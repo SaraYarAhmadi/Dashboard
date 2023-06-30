@@ -4,7 +4,9 @@ import DetailsModal from "./../DetailsModal/DetailsModal";
 import EditModal from "./../EditModal/EditModal";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import ErrorBox from "../Errorbox/Errorbox";
-import {Table, Button} from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
+import { deleteProduct, updateProduct } from "../../Redux/productsSlice";
+import { useSelector, useDispatch } from "react-redux";
 import "./ProductsTable.css";
 
 const initialData = {
@@ -43,37 +45,29 @@ function reducer(state, action) {
   }
 }
 
-export default function ProductsTable({ allProducts, getAllProducts }) {
+export default function ProductsTable() {
 
   const [state, dispatch] = useReducer(reducer, initialData);
+  const reduxDispatch = useDispatch();
+  const { products: allProducts } = useSelector(state => state.products);
 
   const deleteModalCancelAction = () => {
-    dispatch({ type: 'SET_IS_SHOW_DELETE_MODAL', payload: { isShowDeleteModal: false } })
+    dispatch({ type: 'SET_IS_SHOW_DELETE_MODAL', payload: { isShowDeleteModal: false } });
   };
 
   const deleteModalSubmitAction = () => {
-    const newProduct = allProducts.filter(product => product.id !== state.productID);
-    dispatch({ type: 'SET_IS_SHOW_DELETE_MODAL', payload: { isShowDeleteModal: false } })
-    getAllProducts(newProduct);
-
+    dispatch({ type: 'SET_IS_SHOW_DELETE_MODAL', payload: { isShowDeleteModal: false } });
+    reduxDispatch(deleteProduct(state.productID));
   };
 
   const closeDetailsmodal = () => {
-    dispatch({ type: 'SET_IS_SHOW_DETAILS_MODAL', payload: { isShowDetailsModal: false } })
+    dispatch({ type: 'SET_IS_SHOW_DETAILS_MODAL', payload: { isShowDetailsModal: false } });
   };
 
   const updateProductInfos = (event) => {
     event.preventDefault();
 
-    const newProduct = allProducts.map(product => {
-      if (product.id === state.productID) {
-        return { ...product, ...state.productData };
-      } else {
-        return product
-      }
-    });
-
-    getAllProducts(newProduct);
+    reduxDispatch(updateProduct(state.productData));
     dispatch({ type: 'SET_IS_SHOW_EDIT_MODAL', payload: { isShowEditModal: false } });
   };
 
@@ -177,7 +171,7 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
       )}
       {state.isShowEditModal && (
         <EditModal
-        className="my-3 p-2 w-100 border border-1 border-secondary"
+          className="my-3 p-2 w-100 border border-1 border-secondary"
           onClose={() => dispatch({ type: 'SET_IS_SHOW_EDIT_MODAL', payload: { isShowEditModal: false } })}
           onSubmit={updateProductInfos}
         >

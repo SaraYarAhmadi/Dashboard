@@ -1,9 +1,6 @@
 .home{
     margin-top: 100px;
-    /* height: 100vh; */
 }
-
-
 
 .cardGroup-dark {
     color: var(--white);
@@ -13,4 +10,9 @@
 .cardGroup-light {
     color: var(--dark);
     background-color: var(--darkgoldenrod);
+}
+
+.chart{
+    width: 96% !important;
+    border-radius: 5px;
 }
