@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { AiOutlineBell } from 'react-icons/ai';
 import Switch from './Switch/Switch';
 import SearchBoxItem from './SearchBoxItem/SearchBoxItem';
 import { useSelector } from 'react-redux';
-
 import './Header.css'
 
-export default function Header({ onClick, isDark }) {
-    
+export default function Header() {
+
+    const { isDark } = useSelector(state => state.theme);
     const { products } = useSelector(state => state.products);
     const [keyword, setKeyword] = useState('');
 
@@ -36,10 +35,7 @@ export default function Header({ onClick, isDark }) {
                     </div>
                 </div>
                 <div className='flexBasic'>
-                    <button className='header-left-icon'>
-                        <AiOutlineBell />
-                    </button>
-                    <Switch onClick={onClick} />
+                    <Switch  />
                 </div>
 
             </div>

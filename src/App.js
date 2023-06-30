@@ -5,13 +5,15 @@ import Header from "./components/Header/Header";
 import routes from "./routes";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useSelector } from "react-redux";
+
 import './App.css'
 
 export default function App() {
 
   const router = useRoutes(routes)
   const [loading, setLoading] = useState(true);
-  const [isDark, setIsdark] = useState(true)
+  const {isDark}=useSelector(state => state.theme);
 
   useEffect(() => {
     setTimeout(() => {
@@ -19,10 +21,10 @@ export default function App() {
     }, 2000);
   }, []);
 
-  const changeTheme = (event) => {
-    const isDark = event.target.checked;
-    setIsdark(isDark)
-  };
+  // const changeTheme = (event) => {
+  //   const isDark = event.target.checked;
+  //   dispatch(changeTheme(isDark));
+  // };
 
   return (
     loading ?
@@ -36,7 +38,7 @@ export default function App() {
          <Col xs={12} sm={12} md={10} className="p-0" >
            <div className={`main ${isDark ? 'main-dark' : 'main-light'}`}>
 
-             <Header onClick={changeTheme} isDark={isDark} />
+             <Header />
 
              {router}
            </div>
